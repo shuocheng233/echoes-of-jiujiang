@@ -19,7 +19,8 @@ const config = {
         alias: {
             '@components': path.resolve(__dirname, 'src/components'),
             '@pages': path.resolve(__dirname, 'src/pages'),
-            '@styles': path.resolve(__dirname, 'src/styles')
+            '@styles': path.resolve(__dirname, 'src/styles'),
+            '@assets': path.resolve(__dirname, 'src/assets')
         }
     },
 
@@ -34,6 +35,15 @@ const config = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
+            },
+
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',  // Injects styles into DOM
+                    'css-loader',    // Translates CSS into CommonJS
+                    'sass-loader'    // Compiles Sass/Scss to CSS
+                ]
             }
         ]
     },
